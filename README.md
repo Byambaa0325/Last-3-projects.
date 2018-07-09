@@ -13,6 +13,7 @@ This is an application of neuroevolution system, which is a form of artificial i
 
 
 1."Neuroevolution." En.wikipedia.org. N. p., 2018. Web. 9 July 2018.
+
 2. "Steering Behaviors For Autonomous Characters." Red3d.com. N. p., 2018. Web. 9 July 2018. https://www.red3d.com/cwr/steer/gdc99/
 
 #2 Iris-Classifier
