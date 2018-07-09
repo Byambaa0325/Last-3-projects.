@@ -1,0 +1,2 @@
+class Bush implements Obstacle {
+}

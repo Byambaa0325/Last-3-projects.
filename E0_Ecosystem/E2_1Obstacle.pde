@@ -1,0 +1,5 @@
+interface Obstacle extends Environment {
+
+
+
+}
