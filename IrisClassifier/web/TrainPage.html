@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    
+  <head>
+ <script type="text/javascript">
+    var weights1="0,0,0,0,0;0,0,0,0,0;0,0,0,0,0";   
+  </script>
+  <script>
+      //Function for making get request with parameters
+function myFunction() {            
+var xhr = new XMLHttpRequest();
+var x = document.getElementById("PredictForm");
+xhr.open('GET', "http://localhost:8080/IrisClassifier/webresources/train/predict?"+"sl="+x.elements[0].value+"&"+"sw="+x.elements[1].value+"&"+"pl="+x.elements[2].value+"&"+"pw="+x.elements[3].value+"&weights="+weights1, true);
+xhr.send();
+xhr.onreadystatechange = processRequest;
+ 
+function processRequest(e) {
+ 
+ if (xhr.readyState === 4&& xhr.status === 200) {
+     //transform responseback into json
+     var response = JSON.parse(xhr.responseText);
+     alert(response.class);
+    }
+}
+
+}
+</script>
+<script>
+function myFunctionTrain() {
+var xhr = new XMLHttpRequest();
+var x = document.getElementById("PredictForm");
+xhr.onreadystatechange =function () { 
+ if (xhr.readyState === 4&& xhr.status === 200) {
+   weights1=xhr.responseText;   
+   print();
+    }
+};
+xhr.open('POST', "http://localhost:8080/IrisClassifier/webresources/train?"+"dir="+x.elements[0].value+"&"+"NoTE="+x.elements[1].value+"&"+"E="+x.elements[2].value+"&"+"LR="+x.elements[3].value, true);
+xhr.send();
+}
+</script>
+<script>
+function myFunctionSOW() {     
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() { 
+ if (this.readyState === 4&& this.status === 200) {
+   weights1=xhr.responseText;   
+   print();}
+};
+xhr.open('POST', "http://localhost:8080/IrisClassifier/webresources/train/SOW", true);
+xhr.send();
+}
+</script>
+<script> 
+    //Weights of first node:
+    function print(){
+        var index=weights1.indexOf(";");
+       document.getElementById("weights11").innerHTML = weights1.substring(0,index);            
+    
+    
+      //Weights of second node:   
+          var index1=weights1.indexOf(";",index+1);
+          document.getElementById("weights22").innerHTML = weights1.substring(index+1,index1);           
+   
+    
+     // Weights of third node:      
+            
+          document.getElementById("weights33").innerHTML = weights1.substring(index1+1);   }                
+    </script>
+</head>
+<body>
+    
+    
+    <h2>Train with your data</h2>
+
+<form id="TrainForm" action="">
+  Data for Training:<br>
+ <input name="myFile" type="file">
+  <br>  
+  Size of Training Data:<br>
+  <input type="number" name="size" value="">
+  <br>  
+  Epoch:<br>
+  <input type="text" name="E" value="20000">
+  <br>  
+   Learning Rate:<br>
+  <input type="text" name="LR" value="0.7">
+  <br>  
+  <button onclick="myFunctionTrain()">Train</button>
+</form> 
+    
+    <p>Please choose a txt or a data file which contains a data separated by comma, in order of sl,sw,pl,pw,and class, and each line is separated by a space</p>
+    <h2>Set an optimal weights</h2>
+      
+<form action="">
+        <button onclick="myFunctionSOW()">Set</button>
+</form>    
+    
+    <p>Automatically set an optimal weights which have been trained by the data from https://archive.ics.uci.edu/ml/datasets/Iris.</p>
+    <p>Epoch count:20000</p>
+    
+<h2>Predict from your trained model</h2>
+
+<form id="PredictForm">
+  Sepal length:<br>
+  <input type="text" name="sl" value="5.6">
+  <br>  
+  Sepal width:<br>
+  <input type="text" name="sw" value="3.6">
+  <br>
+   Petal length:<br>
+  <input type="text" name="pl" value="1.6">
+  <br>
+   Petal width:<br>
+  <input type="text" name="pw" value="0.2">
+  <br>
+ <button onclick="myFunction()">Classify</button>
+</form> 
+
+<p>To classify your flower, please click the submit button.</p>
+
+<br><br>
+<h2>Current weights and bias values:</h2>
+<form id="Weights">
+    <br> 
+    Weights of first node: 
+    <p id="weights11"></p>    
+    Weights of second node:   
+    <p id="weights22"></p>         
+    Weights of third node:      
+    <p id="weights33"></p>                
+   
+    
+</form>
+<script>var index=weights1.indexOf(";");
+        document.getElementById("weights11").innerHTML = weights1.substring(0,index);            
+        var index1=weights1.indexOf(";",index+1);
+        document.getElementById("weights22").innerHTML = weights1.substring(index+1,index1);         
+        document.getElementById("weights33").innerHTML = weights1.substring(index1+1);
+      </script>
+ 
+<form>
+    <input type="button" value="Go back to pre-trained model" 
+           onclick="window.location.href='http://localhost:8080/IrisClassifier/'"/>
+</form>
+
+
+
+
+
+</body>
+</html>
