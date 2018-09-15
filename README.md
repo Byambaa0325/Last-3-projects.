@@ -3,7 +3,7 @@ This is my recent projects
 
 #1 E0_Ecosystem
 (Still in Development)
-This is an application of neuroevolution system, which is a form of artificial intelligence that uses evolutionary algorithms to generate artificial neural networks (ANN), parameters, topology and rules.[1]. It is a simulation of an ecosystem with predators and preys with each having 2 types varying in their attributes. Each class that implements Animal interface searches for food, mates with same class objects, the matings are done in an asexual manner, and Predator class exclusively huntes Prey class objects. 
+/*This is an application of neuroevolution system, which is a form of artificial intelligence that uses evolutionary algorithms to generate artificial neural networks (ANN), parameters, topology and rules.[1].*/ It is a simulation of an ecosystem with predators and preys with each having 2 types varying in their attributes. Each class that implements Animal interface searches for food, mates with same class objects, the matings are done in an asexual manner, and Predator class exclusively huntes Prey class objects. 
 
   For the implementation, I have currently added only the Predator and Prey classes and its subclasses. Movement is implemented using steering forces[2]. Each animal has a brain (or perceptron), which receives list of targets from the scanned area then processes the list to adjust steering forces, and a dna, consisting of 3 attributes each modifying behaviors of the animal such as speed, chance of succesfully mating, health, size, and learingRate etc. 
   
