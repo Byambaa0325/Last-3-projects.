@@ -1,7 +1,7 @@
 <h1>Recent projects (Outdated)</h1>
 <sub>This is my recent projects</sub>
 
-<h2>E0_Ecosystem<h2>
+<h2>E0_Ecosystem</h2>
 <sub>(Still in Development)</sub>
 <p>/*This is an application of neuroevolution system, which is a form of artificial intelligence that uses evolutionary algorithms to generate artificial neural networks (ANN), parameters, topology and rules.[1].*/ It is a simulation of an ecosystem with predators and preys with each having 2 types varying in their attributes. Each class that implements Animal interface searches for food, mates with same class objects, the matings are done in an asexual manner, and Predator class exclusively huntes Prey class objects.</p> 
 
